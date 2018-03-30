@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>基于H5的vue音乐播放器</title>
-    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
-</head>
-<body>
-    <div id='app'>
+
+    <template>
         <input type="button" value="静音" @click='novoice'><input type="button" value="播放" @click='playing'><br>
         <input type="button" value="上一曲" @click='last'><input type="button" value="下一曲" @click='next'><br>
         <label>音量：</label><input type='range'min="0.1" max="1" step="0.1" @change='vol()' ref='volume'><br>
@@ -17,16 +8,17 @@
             <p>{{songname}}</p>
 <p>当前进度:{{currenttime}}</p>
 <p>总时长:{{alltime}}</p>
-    </div>
+    </template>
 
   
    <script>
 
 
-       new Vue({
-  el: '#app',
-  data: {
-   
+     
+export default {
+
+  data(){
+   return{
     currenttime:'',//已播放时间
     alltime:'',//歌曲总时长
     isplay:true,//是否播放状态
@@ -36,6 +28,7 @@
     index:0,//当前歌曲的索引,
     maxlength:'',
     songname:''
+   }
   },
   methods:{
       
@@ -137,9 +130,7 @@ this.$refs.music.volume=this.$refs.volume.value
   mounted(){
    this.musicsrc=this.sing[this.index]
   }
-})
+}
       
 
    </script>
-</body>
-</html>
